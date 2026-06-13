@@ -1,0 +1,26 @@
+name: Build LVGL WASM 1024x600
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: mymindstorm/setup-emsdk@v14
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          emcmake cmake .. \
+            -DLVGL_CHOSEN_DEMO=lv_demo_widgets \
+            -DLVGL_HOR_RES=1024 \
+            -DLVGL_VER_RES=600
+          emmake make -j4
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lvgl-wasm-1024x600
+          path: build/
