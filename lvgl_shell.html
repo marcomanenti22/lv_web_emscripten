@@ -41,8 +41,8 @@
         <script src="gitrev.js"></script>
 		<script>
 			var siteURL = new URL(window.location.href);
-			var w = siteURL.searchParams.get("w") || "800";
-			var h = siteURL.searchParams.get("h") || "480";
+			var w = siteURL.searchParams.get("w") || "1024";
+			var h = siteURL.searchParams.get("h") || "600";
 			var canvas = document.getElementById('canvas');
 			canvas.setAttribute("width", w);
 			canvas.setAttribute("height", h);
@@ -57,7 +57,7 @@
 				canvas: (function() {
 					return canvas;
 				})(),
-				arguments: [ siteURL.searchParams.get("w") || "800", siteURL.searchParams.get("h") || "480", siteURL.searchParams.get("example") ?? "default" ]
+				arguments: [ siteURL.searchParams.get("w") || "1024", siteURL.searchParams.get("h") || "600", siteURL.searchParams.get("example") ?? "default" ]
 			};
 			if(typeof window.git_hash != 'undefined') {
 				var gitHashDiv = document.querySelector("#git-hash");
